@@ -37,6 +37,18 @@ class ViewController: UIViewController, DigitalKeyboardDelete {
         //        keyboard.isSafety = true
         //        textField.inputView = keyboard
         //        textField.becomeFirstResponder()
+        
+        
+        let textField2 = UITextField(frame: CGRect(x: 100, y: 320, width: 200, height: 35))
+        textField2.borderStyle = .roundedRect
+        view.addSubview(textField2)
+        
+        //        DigitalKeyboard.default.addKeyboard(view, field: textField2)
+        let accessoryView2 = UIView(frame: CGRect(origin: .zero, size: CGSize(width: self.view.bounds.width, height: 44)))
+        accessoryView2.backgroundColor = .red
+        let digitalKeyboard2 = DigitalKeyboard(view, accessoryView: accessoryView2, field: textField2)
+        digitalKeyboard2.delegate = self
+        digitalKeyboard2.dkstyle = .number
     }
     
     func test() {
@@ -46,6 +58,12 @@ class ViewController: UIViewController, DigitalKeyboardDelete {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        self.view.endEditing(true)
     }
 }
 
